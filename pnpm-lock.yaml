@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hyperlane-xyz/cli':
-        specifier: ^8.6.1
-        version: 8.6.1(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/node@22.13.4)(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(typescript@5.7.3)(utf-8-validate@5.0.10)
+        specifier: ^8.7.0
+        version: 8.7.0(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/node@22.13.5)(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(typescript@5.7.3)(utf-8-validate@5.0.10)
 
 packages:
 
@@ -187,8 +187,8 @@ packages:
     resolution: {integrity: sha512-aA63XwOkcl4xxQa3HjPMqOP6LiK0ZDv3mUPYEFXkpHbaFjtGggE1A61FjFzJnB+p7/oy2gA8E+rcBNl/zC1tMg==}
     engines: {node: '>=6.9.0'}
 
-  '@chain-registry/types@0.50.77':
-    resolution: {integrity: sha512-+r0QxscS/cYgmxfL2dBi7OecTX5T2zgVpIaz6jxUaJlN6gFM5WYC0wmM0aTdkBJhM4tJYR51pCzFvzB7YQbEWQ==}
+  '@chain-registry/types@0.50.80':
+    resolution: {integrity: sha512-Z6PdzRIiQv6czrlU93Ppjm8ITgiC8DYh1+fgAVonqeZA/mkI2WdZgSvZQBfd72OLkbv0tHvaEnHLdscZdovcMQ==}
 
   '@chainlink/contracts-ccip@0.7.6':
     resolution: {integrity: sha512-yNbCBFpLs3R+ALymto9dQYKz3vatnjqYGu1pnMD0i2fHEMthiXe0+otaNCGNht6n8k7ruNaA0DNpz3F+2jHQXw==}
@@ -501,32 +501,32 @@ packages:
   '@ethersproject/wordlists@5.7.0':
     resolution: {integrity: sha512-S2TFNJNfHWVHNE6cNDjbVlZ6MgE17MIxMbMg2zv3wn+3XSJGosL1m9ZVv3GXCf/2ymSsQ+hRI5IzoMJTG6aoVA==}
 
-  '@hyperlane-xyz/cli@8.6.1':
-    resolution: {integrity: sha512-lePVog0Vfj7GMivc1vhCIi1X/Ed12jHpLW1mzKgAZideX++XObgFt8GhfYjNj09Gxq7Y4YmTbO5tTn1DYwUR4A==}
+  '@hyperlane-xyz/cli@8.7.0':
+    resolution: {integrity: sha512-kaImztBeEYeDOgramsdoPtA/UcT+7BS7zoN5ooOh9XMSUujssrY+XmMCWjp1cI/8Ec+fYAXpv3S4OrKhhIKLZA==}
     engines: {node: '>=16'}
     hasBin: true
 
-  '@hyperlane-xyz/core@5.11.3':
-    resolution: {integrity: sha512-bb16HAb2D5WjopG03Z7aofILwSqDDmQsrflf5ufEpw1OcPYIHMoMuk2+YEyOPzh0GFmUWNeFmWN+aMcJxYs35w==}
+  '@hyperlane-xyz/core@5.11.4':
+    resolution: {integrity: sha512-+kKXRAtGZQHBx8nD6a/bkfH7DKnV8ZMQfUmvBT0uW7ISXHItjtRhdLLeRGdy6/+UGiVUcgWMgTVsk0qx6LHD5w==}
     engines: {node: '>=16'}
     peerDependencies:
       '@ethersproject/abi': '*'
       '@ethersproject/providers': '*'
       '@types/sinon-chai': '*'
 
-  '@hyperlane-xyz/registry@9.1.0':
-    resolution: {integrity: sha512-U3jGsmvvjpVXVISGyC9naCdlLJbgIRmYLWm8Kwj6D2/xHpQX/XD39bxuUPA+3Bn9WAYRixLc3tGyt0NmEGpfjw==}
+  '@hyperlane-xyz/registry@9.5.0':
+    resolution: {integrity: sha512-r7Jr1MXa78/3/BKjuE4NbZjcErIwS1irMa9SxxGnREIKnrKfi/ETIFyszh1wufGdw3nsgz9cRdzbh9HdJl1M3A==}
     engines: {node: '>=16'}
 
-  '@hyperlane-xyz/sdk@8.6.1':
-    resolution: {integrity: sha512-QM7+NfUja5UfQssdapf9lt52ZXj9Zwp4SdKMQk8BmI4/WyX44MTOtE/npLGOcG8j0MtTuGsZnttcqA06ayDkwA==}
+  '@hyperlane-xyz/sdk@8.7.0':
+    resolution: {integrity: sha512-LOO7MT9011sva07NTp1WI3h0oZD/RZaxtjGevhb7PA5ORrzaEYEEqY4Iv4Wn+oCimEGiZwAM9g0tgoWgMIeatw==}
     engines: {node: '>=16'}
     peerDependencies:
       '@ethersproject/abi': '*'
       '@ethersproject/providers': '*'
 
-  '@hyperlane-xyz/utils@8.6.1':
-    resolution: {integrity: sha512-p1dK1RNNCUK6WQ3sblqMT0UXmqAu5Z27WMVD1U0/VI2sCb+P0SLIKEjAKATBUxWuFNFhOI9B30YMKZfN8pnBjg==}
+  '@hyperlane-xyz/utils@8.7.0':
+    resolution: {integrity: sha512-aAD+/e0XQIKqLNQiPS7XfI6yAcvdW4pm0azvOdSf6RgAWUUMWTjYVGtKnYvcIQNyJ15Mq+SY/FiA23hKKOF1yw==}
     engines: {node: '>=16'}
 
   '@inquirer/checkbox@1.5.2':
@@ -1100,8 +1100,8 @@ packages:
   '@types/node@20.17.19':
     resolution: {integrity: sha512-LEwC7o1ifqg/6r2gn9Dns0f1rhK+fPFDoMiceTJ6kWmVk6bgXBI/9IOWfVan4WiAavK9pIVWdX0/e3J+eEUh5A==}
 
-  '@types/node@22.13.4':
-    resolution: {integrity: sha512-ywP2X0DYtX3y08eFVx5fNIw7/uIv8hYUKgXoK8oayJlLnKcRfEYCxWMVE1XagUdVtCJlZT1AU4LXEABW+L1Peg==}
+  '@types/node@22.13.5':
+    resolution: {integrity: sha512-+lTU0PxZXn0Dr1NBtC7Y8cR21AJr87dLLU953CWA6pMxxv/UDc7jYAY90upcrie1nRcD6XNG5HOYEDtgW5TxAg==}
 
   '@types/pbkdf2@3.1.2':
     resolution: {integrity: sha512-uRwJqmiXmh9++aSu1VNEn3iIxWOhd8AHXNSdlaLfdAAdSTY9jYVeGWnzejM3dvrkbqE3/hyQkQQ29IFATEGlew==}
@@ -1118,8 +1118,8 @@ packages:
   '@types/sinon-chai@4.0.0':
     resolution: {integrity: sha512-Uar+qk3TmeFsUWCwtqRNqNUE7vf34+MCJiQJR5M2rd4nCbhtE8RgTiHwN/mVwbfCjhmO6DiOel/MgzHkRMJJFg==}
 
-  '@types/sinon@17.0.3':
-    resolution: {integrity: sha512-j3uovdn8ewky9kRBG19bOwaZbexJu/XjtkHyjvUgt4xfPFz18dcORIMqnYh66Fx3Powhcr85NT5+er3+oViapw==}
+  '@types/sinon@17.0.4':
+    resolution: {integrity: sha512-RHnIrhfPO3+tJT0s7cFaXGZvsL4bbR3/k7z3P312qMS4JaS2Tk+KiwiLx1S0rQ56ERj00u1/BtdyVd0FY+Pdew==}
 
   '@types/sinonjs__fake-timers@8.1.5':
     resolution: {integrity: sha512-mQkU2jY8jJEF7YHjHvsQO8+3ughTL1mcnn96igfhONmR+fUPSKIkefQYpSe8bsly2Ep7oQbn/6VG5/9/0qcArQ==}
@@ -1872,8 +1872,8 @@ packages:
   get-func-name@2.0.2:
     resolution: {integrity: sha512-8vXOvuE167CtIc3OyItco7N/dpRtBbYOsPsXCz7X/PMnlGjYjSGuZJgM1Y7mmew7BKf9BqvLX2tnOVy1BBUsxQ==}
 
-  get-intrinsic@1.2.7:
-    resolution: {integrity: sha512-VW6Pxhsrk0KAOqs3WEd0klDiF/+V7gQOpAvY1jVU/LHmaD/kQO4523aiJuikX/QAKYiW6x8Jh+RJej1almdtCA==}
+  get-intrinsic@1.3.0:
+    resolution: {integrity: sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==}
     engines: {node: '>= 0.4'}
 
   get-proto@1.0.1:
@@ -2605,8 +2605,8 @@ packages:
     resolution: {integrity: sha512-d5gdPmgQ0Z+AklL2NVXr/IoSjNZFfTVvQWzL/AM2AOcSzYP2xjlb0AC8YyCLc41MSNf6P6QVtjgPdmVtzb+4lQ==}
     hasBin: true
 
-  rpc-websockets@9.0.4:
-    resolution: {integrity: sha512-yWZWN0M+bivtoNLnaDbtny4XchdAIF5Q4g/ZsC5UC61Ckbp0QczwO8fg44rV3uYmY4WHd+EZQbn90W1d8ojzqQ==}
+  rpc-websockets@9.0.5:
+    resolution: {integrity: sha512-beIDQsnbug/SmxY7k+W3jSGmKEDy+mnvR0XMsgPWHvxyKxaw7VLMenkEgrWb6D4Bw5Hr6zXyv0Awd+sgwsg3Ow==}
 
   run-async@3.0.0:
     resolution: {integrity: sha512-540WwVDOMxA6dN6We19EcT9sc3hkXPw5mzRNGM3FkdN/vtE9NFvj5lFAPNwUDmJjXidm3v7TC1cTE7t17Ulm1Q==}
@@ -2751,8 +2751,8 @@ packages:
     resolution: {integrity: sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==}
     engines: {node: '>=0.10.0'}
 
-  strnum@1.0.5:
-    resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
+  strnum@1.1.1:
+    resolution: {integrity: sha512-O7aCHfYCamLCctjAiaucmE+fHf2DYHkus2OKCn4Wv03sykfFtgeECn505X6K4mPl8CRNd/qurC9guq+ynoN4pw==}
 
   superstruct@2.0.2:
     resolution: {integrity: sha512-uV+TFRZdXsqXTL2pRvujROjdZQ4RAlBUS5BTh9IGm+jTqQntYThciG/qu57Gs69yjnVUSqdxF9YLmSnpupBW9A==}
@@ -2922,8 +2922,8 @@ packages:
     resolution: {integrity: sha512-ZZKSmDAEFOijERBLkmYfJ+vmk3w+7hOLYDNkRCuRuMJGEmqYNCNLyBBFwWKVMhfwaEF3WOd0Zlw86U/WC/+nYw==}
     engines: {'0': node >=0.6.0}
 
-  viem@2.23.3:
-    resolution: {integrity: sha512-ON/Uybteajqxn3iFyhV/6Ybm+QKhcrsVyTZf/9v2w0CvYQIoyJYCfHSsQR9zpsbOGrR7d2p62w6jzb6fqzzacg==}
+  viem@2.23.5:
+    resolution: {integrity: sha512-cUfBHdFQHmBlPW0loFXda0uZcoU+uJw3NRYQRwYgkrpH6PgovH8iuVqDn6t1jZk82zny4wQL54c9dCX2W9kLMg==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
@@ -3080,6 +3080,18 @@ packages:
 
   ws@8.18.0:
     resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
+  ws@8.18.1:
+    resolution: {integrity: sha512-RKW2aJZMXeMxVpnZ6bck+RswznaxmzdULiBr6KY7XkTnW8uvt0iT9H5DkHUChXrc+uurzwa0rVI16n/Xzjdz1w==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -3694,7 +3706,7 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.14.1
 
-  '@chain-registry/types@0.50.77': {}
+  '@chain-registry/types@0.50.80': {}
 
   '@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10)':
     dependencies:
@@ -4210,17 +4222,17 @@ snapshots:
       '@ethersproject/properties': 5.7.0
       '@ethersproject/strings': 5.7.0
 
-  '@hyperlane-xyz/cli@8.6.1(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/node@22.13.4)(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(typescript@5.7.3)(utf-8-validate@5.0.10)':
+  '@hyperlane-xyz/cli@8.7.0(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/node@22.13.5)(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(typescript@5.7.3)(utf-8-validate@5.0.10)':
     dependencies:
       '@aws-sdk/client-kms': 3.750.0
       '@aws-sdk/client-s3': 3.750.0
-      '@hyperlane-xyz/registry': 9.1.0
-      '@hyperlane-xyz/sdk': 8.6.1(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(typescript@5.7.3)(utf-8-validate@5.0.10)
-      '@hyperlane-xyz/utils': 8.6.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+      '@hyperlane-xyz/registry': 9.5.0
+      '@hyperlane-xyz/sdk': 8.7.0(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(typescript@5.7.3)(utf-8-validate@5.0.10)
+      '@hyperlane-xyz/utils': 8.7.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@inquirer/core': 9.0.10
       '@inquirer/figures': 1.0.5
       '@inquirer/prompts': 3.3.2
-      '@inquirer/search': 3.0.9(@types/node@22.13.4)
+      '@inquirer/search': 3.0.9(@types/node@22.13.5)
       ansi-escapes: 7.0.0
       asn1.js: 5.4.1
       bignumber.js: 9.1.2
@@ -4253,13 +4265,13 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@hyperlane-xyz/core@5.11.3(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(utf-8-validate@5.0.10)':
+  '@hyperlane-xyz/core@5.11.4(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(utf-8-validate@5.0.10)':
     dependencies:
       '@arbitrum/nitro-contracts': 1.3.0
       '@eth-optimism/contracts': 0.6.0(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10)
       '@ethersproject/abi': 5.7.0
       '@ethersproject/providers': 5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-      '@hyperlane-xyz/utils': 8.6.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+      '@hyperlane-xyz/utils': 8.7.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@layerzerolabs/lz-evm-oapp-v2': 2.0.2(@arbitrum/nitro-contracts@1.3.0)(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@eth-optimism/contracts@0.6.0(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@openzeppelin/contracts-upgradeable@4.9.6)(@openzeppelin/contracts@4.9.6)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)
       '@openzeppelin/contracts': 4.9.6
       '@openzeppelin/contracts-upgradeable': 4.9.6
@@ -4275,22 +4287,22 @@ snapshots:
       - solidity-bytes-utils
       - utf-8-validate
 
-  '@hyperlane-xyz/registry@9.1.0':
+  '@hyperlane-xyz/registry@9.5.0':
     dependencies:
       yaml: 2.4.5
       zod: 3.24.2
 
-  '@hyperlane-xyz/sdk@8.6.1(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(typescript@5.7.3)(utf-8-validate@5.0.10)':
+  '@hyperlane-xyz/sdk@8.7.0(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(typescript@5.7.3)(utf-8-validate@5.0.10)':
     dependencies:
       '@arbitrum/sdk': 4.0.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@aws-sdk/client-s3': 3.750.0
-      '@chain-registry/types': 0.50.77
+      '@chain-registry/types': 0.50.80
       '@cosmjs/cosmwasm-stargate': 0.32.4(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@cosmjs/stargate': 0.32.4(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@ethersproject/abi': 5.7.0
       '@ethersproject/providers': 5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-      '@hyperlane-xyz/core': 5.11.3(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(utf-8-validate@5.0.10)
-      '@hyperlane-xyz/utils': 8.6.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+      '@hyperlane-xyz/core': 5.11.4(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(@types/sinon-chai@4.0.0)(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)(utf-8-validate@5.0.10)
+      '@hyperlane-xyz/utils': 8.7.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@safe-global/api-kit': 1.3.0
       '@safe-global/protocol-kit': 1.3.0(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10)
       '@safe-global/safe-deployments': 1.37.23
@@ -4301,7 +4313,7 @@ snapshots:
       cross-fetch: 3.2.0
       ethers: 5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       pino: 8.21.0
-      viem: 2.23.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.2)
+      viem: 2.23.5(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.2)
       zod: 3.24.2
     transitivePeerDependencies:
       - '@axelar-network/axelar-gmp-sdk-solidity'
@@ -4318,7 +4330,7 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@hyperlane-xyz/utils@8.6.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
+  '@hyperlane-xyz/utils@8.7.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
     dependencies:
       '@cosmjs/encoding': 0.32.4
       '@solana/web3.js': 1.98.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
@@ -4346,10 +4358,10 @@ snapshots:
       '@inquirer/type': 1.5.5
       chalk: 4.1.2
 
-  '@inquirer/core@10.1.7(@types/node@22.13.4)':
+  '@inquirer/core@10.1.7(@types/node@22.13.5)':
     dependencies:
       '@inquirer/figures': 1.0.10
-      '@inquirer/type': 3.0.4(@types/node@22.13.4)
+      '@inquirer/type': 3.0.4(@types/node@22.13.5)
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
       mute-stream: 2.0.0
@@ -4357,7 +4369,7 @@ snapshots:
       wrap-ansi: 6.2.0
       yoctocolors-cjs: 2.1.2
     optionalDependencies:
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
 
   '@inquirer/core@6.0.0':
     dependencies:
@@ -4381,7 +4393,7 @@ snapshots:
       '@inquirer/figures': 1.0.5
       '@inquirer/type': 1.5.5
       '@types/mute-stream': 0.0.4
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       cli-spinners: 2.9.2
@@ -4441,14 +4453,14 @@ snapshots:
       '@inquirer/type': 1.5.5
       chalk: 4.1.2
 
-  '@inquirer/search@3.0.9(@types/node@22.13.4)':
+  '@inquirer/search@3.0.9(@types/node@22.13.5)':
     dependencies:
-      '@inquirer/core': 10.1.7(@types/node@22.13.4)
+      '@inquirer/core': 10.1.7(@types/node@22.13.5)
       '@inquirer/figures': 1.0.10
-      '@inquirer/type': 3.0.4(@types/node@22.13.4)
+      '@inquirer/type': 3.0.4(@types/node@22.13.5)
       yoctocolors-cjs: 2.1.2
     optionalDependencies:
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
 
   '@inquirer/select@1.3.3':
     dependencies:
@@ -4462,9 +4474,9 @@ snapshots:
     dependencies:
       mute-stream: 1.0.0
 
-  '@inquirer/type@3.0.4(@types/node@22.13.4)':
+  '@inquirer/type@3.0.4(@types/node@22.13.5)':
     optionalDependencies:
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
 
   '@layerzerolabs/lz-evm-messagelib-v2@2.3.44(@arbitrum/nitro-contracts@1.3.0)(@axelar-network/axelar-gmp-sdk-solidity@5.10.0)(@chainlink/contracts-ccip@0.7.6(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@eth-optimism/contracts@0.6.0(bufferutil@4.0.9)(ethers@5.7.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10))(@layerzerolabs/lz-evm-protocol-v2@2.3.44(@openzeppelin/contracts-upgradeable@4.9.6)(@openzeppelin/contracts@4.9.6)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3))(@layerzerolabs/lz-evm-v1-0.7@2.3.44(@openzeppelin/contracts-upgradeable@4.9.6)(@openzeppelin/contracts@4.9.6)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10)))(@openzeppelin/contracts-upgradeable@4.9.6)(@openzeppelin/contracts@4.9.6)(hardhat-deploy@0.12.4(bufferutil@4.0.9)(utf-8-validate@5.0.10))(solidity-bytes-utils@0.8.3)':
     dependencies:
@@ -5095,7 +5107,7 @@ snapshots:
       fast-stable-stringify: 1.0.0
       jayson: 4.1.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       node-fetch: 2.7.0
-      rpc-websockets: 9.0.4
+      rpc-websockets: 9.0.5
       superstruct: 2.0.2
     transitivePeerDependencies:
       - bufferutil
@@ -5116,7 +5128,7 @@ snapshots:
 
   '@types/bn.js@5.1.6':
     dependencies:
-      '@types/node': 22.13.4
+      '@types/node': 12.20.55
 
   '@types/cacheable-request@6.0.3':
     dependencies:
@@ -5138,14 +5150,14 @@ snapshots:
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
     optional: true
 
   '@types/http-cache-semantics@4.0.4': {}
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
     optional: true
 
   '@types/keyv@3.1.4':
@@ -5156,7 +5168,7 @@ snapshots:
 
   '@types/mute-stream@0.0.4':
     dependencies:
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
 
   '@types/node@12.20.55': {}
 
@@ -5164,13 +5176,13 @@ snapshots:
     dependencies:
       undici-types: 6.19.8
 
-  '@types/node@22.13.4':
+  '@types/node@22.13.5':
     dependencies:
       undici-types: 6.20.0
 
   '@types/pbkdf2@3.1.2':
     dependencies:
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
 
   '@types/qs@6.9.18': {}
 
@@ -5180,14 +5192,14 @@ snapshots:
 
   '@types/secp256k1@4.0.6':
     dependencies:
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
 
   '@types/sinon-chai@4.0.0':
     dependencies:
       '@types/chai': 5.0.1
-      '@types/sinon': 17.0.3
+      '@types/sinon': 17.0.4
 
-  '@types/sinon@17.0.3':
+  '@types/sinon@17.0.4':
     dependencies:
       '@types/sinonjs__fake-timers': 8.1.5
 
@@ -5203,7 +5215,7 @@ snapshots:
 
   '@types/ws@8.5.14':
     dependencies:
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
 
   '@yarnpkg/lockfile@1.1.0': {}
 
@@ -5465,13 +5477,13 @@ snapshots:
     dependencies:
       call-bind-apply-helpers: 1.0.2
       es-define-property: 1.0.1
-      get-intrinsic: 1.2.7
+      get-intrinsic: 1.3.0
       set-function-length: 1.2.2
 
   call-bound@1.0.3:
     dependencies:
       call-bind-apply-helpers: 1.0.2
-      get-intrinsic: 1.2.7
+      get-intrinsic: 1.3.0
 
   caseless@0.12.0: {}
 
@@ -5748,7 +5760,7 @@ snapshots:
   es-set-tostringtag@2.1.0:
     dependencies:
       es-errors: 1.3.0
-      get-intrinsic: 1.2.7
+      get-intrinsic: 1.3.0
       has-tostringtag: 1.0.2
       hasown: 2.0.2
 
@@ -6001,7 +6013,7 @@ snapshots:
 
   fast-xml-parser@4.4.1:
     dependencies:
-      strnum: 1.0.5
+      strnum: 1.1.1
 
   fastestsmallesttextencoderdecoder@1.0.22: {}
 
@@ -6104,7 +6116,7 @@ snapshots:
 
   get-func-name@2.0.2: {}
 
-  get-intrinsic@1.2.7:
+  get-intrinsic@1.3.0:
     dependencies:
       call-bind-apply-helpers: 1.0.2
       es-define-property: 1.0.1
@@ -6768,7 +6780,7 @@ snapshots:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/long': 4.0.2
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
       long: 4.0.0
 
   proxy-addr@2.0.7:
@@ -6913,7 +6925,7 @@ snapshots:
     dependencies:
       bn.js: 5.2.1
 
-  rpc-websockets@9.0.4:
+  rpc-websockets@9.0.5:
     dependencies:
       '@swc/helpers': 0.5.15
       '@types/uuid': 8.3.4
@@ -6921,7 +6933,7 @@ snapshots:
       buffer: 6.0.3
       eventemitter3: 5.0.1
       uuid: 8.3.2
-      ws: 8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+      ws: 8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
     optionalDependencies:
       bufferutil: 4.0.9
       utf-8-validate: 5.0.10
@@ -6996,7 +7008,7 @@ snapshots:
       define-data-property: 1.1.4
       es-errors: 1.3.0
       function-bind: 1.1.2
-      get-intrinsic: 1.2.7
+      get-intrinsic: 1.3.0
       gopd: 1.2.0
       has-property-descriptors: 1.0.2
 
@@ -7024,14 +7036,14 @@ snapshots:
     dependencies:
       call-bound: 1.0.3
       es-errors: 1.3.0
-      get-intrinsic: 1.2.7
+      get-intrinsic: 1.3.0
       object-inspect: 1.13.4
 
   side-channel-weakmap@1.0.2:
     dependencies:
       call-bound: 1.0.3
       es-errors: 1.3.0
-      get-intrinsic: 1.2.7
+      get-intrinsic: 1.3.0
       object-inspect: 1.13.4
       side-channel-map: 1.0.1
 
@@ -7099,7 +7111,7 @@ snapshots:
 
   strip-json-comments@2.0.1: {}
 
-  strnum@1.0.5: {}
+  strnum@1.1.1: {}
 
   superstruct@2.0.2: {}
 
@@ -7260,7 +7272,7 @@ snapshots:
       core-util-is: 1.0.2
       extsprintf: 1.3.0
 
-  viem@2.23.3(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.2):
+  viem@2.23.5(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.2):
     dependencies:
       '@noble/curves': 1.8.1
       '@noble/hashes': 1.7.1
@@ -7553,6 +7565,11 @@ snapshots:
       bufferutil: 4.0.9
       utf-8-validate: 5.0.10
 
+  ws@8.18.1(bufferutil@4.0.9)(utf-8-validate@5.0.10):
+    optionalDependencies:
+      bufferutil: 4.0.9
+      utf-8-validate: 5.0.10
+
   xhr-request-promise@0.1.3:
     dependencies:
       xhr-request: 1.1.0
@@ -7622,4 +7639,4 @@ snapshots:
   zx@8.3.2:
     optionalDependencies:
       '@types/fs-extra': 11.0.4
-      '@types/node': 22.13.4
+      '@types/node': 22.13.5
