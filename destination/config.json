@@ -1,0 +1,27 @@
+{
+  "chains": {
+    "destination": {
+      "customRpcUrls": "http://localhost:8546",
+      "signer": {
+        "region": "us-east-1",
+        "type": "aws",
+        "id": "alias/hyperlane-validator-local"
+      }
+    }
+  },
+  "originChainName": "destination",
+  "db": "/mnt/hyperlane_db",
+  "validator": {
+    "id": "alias/hyperlane-validator-local",
+    "type": "aws",
+    "region": "us-east-1"
+  },
+  "checkpointSyncer": {
+    "bucket": "hyperlane-validator-signatures-validator1-local",
+    "region": "us-east-1",
+    "type": "s3",
+    "folder": "destination"
+  },
+  "reorgPeriod": 14,
+  "metricsPort": "9090"
+}
