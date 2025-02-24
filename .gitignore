@@ -1,0 +1,15 @@
+.idea
+node_modules
+.env.source
+source/config.json
+configs/core-config.yaml
+*.log
+LOG*
+
+# Hyperlane files
+*.sst
+CURRENT
+IDENTITY
+LOCK
+MANIFEST-*
+OPTIONS-*
