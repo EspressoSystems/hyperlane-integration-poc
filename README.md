@@ -10,6 +10,138 @@ Everytime you open a terminal run
 > ./launch_shell
 ```
 
+# AWS configuration
+
+The validator uses AWS service for handling the signing key and storing its signatures in an AWS bucket.
+
+## KMS
+
+### Create IAM user
+
+*TODO:* Automate with Terraform
+
+Reference: https://docs.hyperlane.xyz/docs/operate/set-up-agent-keys#2-aws-kms
+
+1. Go to [aws.amazon.com](aws.amazon.com) and login.
+2. Go to AWS's Identity and Access Management (IAM)
+3. On the left, under "Access management", click "Users".
+4. Click the orange button "Add users".
+5. Pick a friendly and informative username, like hyperlane-validator-${chain_name} or hyperlane-relayer-${chain_name}. **This username will be referenced in future steps, so if you choose a different username be sure to use your correct username in the future.**
+6. Click "Next", you do not need to assign the user any permissions.
+7. Click "Create user".
+8. Click into the user that you just created
+9. Click the "Security Credentials" tab
+10. Scroll down to "Access Keys" and click "Create Access Key"
+11. Select "Application running outside AWS" and click "Next"
+12. Click "Next", no need to add a description tag
+13. Click "Create access key"
+14. Copy the "Access key ID" and "Secret access key" to a safe place. **These will be passed to your Hyperlane Relayer as environment variables.**
+    Set the following environment variables:
+
+```bash
+export AWS_ACCESS_KEY_ID=<Access key ID obtained in step 14>
+export AWS_SECRET_ACCESS_KEY=<Access secret key obyained in step 14>
+```
+
+
+### Create KMS key
+1. Go to AWS's Key Management Service (KMS) in the AWS console.
+1. Ensure you are in the region you want to create the key in. This can be confirmed by viewing the region at the top right of the console, or by finding the name in the URL's subdomain (e.g. us-west-2.console.aws.amazon.com means you're operating in the region us-west-2).
+1. On the left, click "Customer managed keys".
+1. Click "Create key".
+1. Select the "Asymmetric" key type.
+1. Select the "Sign and verify" key usage.
+1. Select the ECC_SECG_P256K1 key spec.
+1. Click "Next".
+1. Set the Alias to something friendly and informative.
+1. While not necessary, feel free to write a description and add any tags that you think will be useful.
+1. Click "Next".
+1. A key administrator is not required, but if you want, you can select one.
+1. Click "Next".
+1. Give usage permissions to the IAM user you created in section #1.
+1. Click "Next".
+1. In the Review page, scroll to the "Key policy". The generated key policy is acceptable, but you can make the access even less permissive if you wish by:
+   1. Removing the kms:DescribeKey and kms:Verify actions from the statement whose "Sid" is "Allow use of the key"
+   1. Removing the entire statement whose "Sid" is "Allow attachment of persistent resources".
+1. Click "Finish"
+
+Set the following environment variable with the alias picked in step 9.
+
+```bash
+export VALIDATOR_KEY_ALIAS=<validator signer key alias picked in step 9>
+```
+
+### Generate the validator address
+
+Using the values generated in the previous step run this command in order to create the validator address.
+
+``` bash
+> export AWS_REGION=<region>
+> export AWS_KMS_KEY_ID=alias/$VALIDATOR_KEY_ALIAS
+> export VALIDATOR_ADDRESS=`cast wallet address --aws`
+```
+
+### Generate the S3 bucket
+
+*TODO:* Automate with Terraform
+
+Reference: https://docs.hyperlane.xyz/docs/operate/validators/validator-signatures-aws
+Your Validator will post their signatures to this bucket.
+
+1. Go to AWS's S3 in the AWS console.
+2. On the right, click the orange "Create Bucket" button
+3. Pick an informative bucket name.
+4. Consider choosing the same region as the KMS key you created in the previous step.
+5. Keep the recommended "ACLs disabled" setting for object ownership.
+6. Configure public access settings so that the relayer can read your signatures
+   1. Uncheck "Block all public access"
+   2. Check the first two options that block access via access control lists
+   3. Leave the last two options unchecked, we will be granting public read access via a bucket policy
+   4. Acknowledge that these settings may result in public access to your bucket
+1. The remaining default settings are fine, click the orange "Create bucket" button on the bottom
+
+### Configure S3 bucket permissions
+
+1. Navigate back to "Identity and Access Management (IAM)" in the AWS console
+1. Under "IAM resources" you should see at least one "User", click into that
+1. Click on the name of the user that you provisioned earlier (e.g. hyperlane-validator-${chain_name})
+1. Copy the "User ARN" to your clipboard, it should look something like arn:aws:iam::791444913613:user/hyperlane-validator-${chain_name}
+1. Navigate back to "S3" in the AWS console
+1. Click on the name of the bucket you just created
+1. Just under the name of the bucket, click "Permissions"
+1. Scroll down to "Bucket policy" and click "Edit"
+1. Enter the following contents. The Bucket ARN is shown just above where you enter the policy
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": ["s3:GetObject", "s3:ListBucket"],
+      "Resource": ["${BUCKET_ARN}", "${BUCKET_ARN}/*"]
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "${USER_ARN}"
+      },
+      "Action": ["s3:DeleteObject", "s3:PutObject"],
+      "Resource": "${BUCKET_ARN}/*"
+    }
+  ]
+}
+```
+
+
+
+Update the environment variables that will be later used to generate some configuration files:
+```bash
+export VALIDATOR_BUCKET_NAME=<bucket name picked in step 3>
+export CHAIN_NAME="source"
+```
+
+
 # Initialize the chains with the Hyperlane contracts
 (Reference: https://docs.hyperlane.xyz/docs/guides/local-testnet-setup)
 
@@ -72,21 +204,19 @@ this correct? (Y/n) [PUSH ENTER]
 ETH) (y/N) [PUSH ENTER]
 ```
 
-Initialize the configuration for the Hyperlane contracts.
-```bash
-> hyperlane core init
-Hyperlane Core Configure
-________________________
-Creating a new core deployment config...
-? Detected owner address as 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 from
-signer, is this correct? (Y/n) [PUSH ENTER]
-? Use this same address (0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) for the 
-beneficiary? (Y/n) [PUSH ENTER]
+Note that it is not necessary to initialize the configuration of the core contracts because it is already hardcoded in configs/core-config.yaml.
+However this file depends on the validator's address and thus needs to be generated with the following command:
+
 ```
+> ./create_contracts_config.sh
+OK
+```
+
+Note that this configuration considers a default ISM using a multisig of a single signer. 
 
 Deploy the Hyperlane contracts on the source chain.
 ```bash
-> hyperlane core deploy
+> hyperlane core deploy -o configs/core-config.yaml 
 ? Select network type (Use arrow keys) [PICK Testnet]
 ? Select chain to connect: [TYPE source]
 ? Do you want to use an API key to verify on this (source) chain's block 
@@ -96,7 +226,7 @@ explorer (y/N) [PUSH ENTER]
 
 Deploy the Hyperlane contracts on the destination chain.
 ```bash
-> hyperlane core deploy
+> hyperlane core deploy -o configs/core-config.yaml
 ? Select network type (Use arrow keys) [PICK Testnet]
 ? Select chain to connect: [TYPE destination]
 ? Do you want to use an API key to verify on this (source) chain's block 
@@ -107,134 +237,6 @@ explorer (y/N) [PUSH ENTER]
 
 # Spin up a validator
 
-## AWS KMS
-
-### Create IAM user
-
-*TODO:* Automate with Terraform
-
-Reference: https://docs.hyperlane.xyz/docs/operate/set-up-agent-keys#2-aws-kms
-
-1. Go to [aws.amazon.com](aws.amazon.com) and login.
-2. Go to AWS's Identity and Access Management (IAM) 
-3. On the left, under "Access management", click "Users".
-4. Click the orange button "Add users".
-5. Pick a friendly and informative username, like hyperlane-validator-${chain_name} or hyperlane-relayer-${chain_name}. **This username will be referenced in future steps, so if you choose a different username be sure to use your correct username in the future.**
-6. Click "Next", you do not need to assign the user any permissions.
-7. Click "Create user". 
-8. Click into the user that you just created 
-9. Click the "Security Credentials" tab 
-10. Scroll down to "Access Keys" and click "Create Access Key"
-11. Select "Application running outside AWS" and click "Next"
-12. Click "Next", no need to add a description tag 
-13. Click "Create access key"
-14. Copy the "Access key ID" and "Secret access key" to a safe place. **These will be passed to your Hyperlane Relayer as environment variables.**
-Set the following environment variables:
-
-```bash
-export AWS_ACCESS_KEY_ID=<Access key ID obtained in step 14>
-export AWS_SECRET_ACCESS_KEY=<Access secret key obyained in step 14>
-```
-
-
-### Create KMS key
-1. Go to AWS's Key Management Service (KMS) in the AWS console.
-1. Ensure you are in the region you want to create the key in. This can be confirmed by viewing the region at the top right of the console, or by finding the name in the URL's subdomain (e.g. us-west-2.console.aws.amazon.com means you're operating in the region us-west-2).
-1. On the left, click "Customer managed keys".
-1. Click "Create key".
-1. Select the "Asymmetric" key type.
-1. Select the "Sign and verify" key usage.
-1. Select the ECC_SECG_P256K1 key spec.
-1. Click "Next".
-1. Set the Alias to something friendly and informative.
-1. While not necessary, feel free to write a description and add any tags that you think will be useful.
-1. Click "Next".
-1. A key administrator is not required, but if you want, you can select one.
-1. Click "Next".
-1. Give usage permissions to the IAM user you created in section #1.
-1. Click "Next".
-1. In the Review page, scroll to the "Key policy". The generated key policy is acceptable, but you can make the access even less permissive if you wish by:
-   1. Removing the kms:DescribeKey and kms:Verify actions from the statement whose "Sid" is "Allow use of the key"
-   1. Removing the entire statement whose "Sid" is "Allow attachment of persistent resources".
-1. Click "Finish"
-
-Set the following environment variable with the alias picked in step 9.
-
-```bash
-export VALIDATOR_KEY_ALIAS=<validator signer key alias picked in step 9>
-```
-
-### Generate the validator address
-
-Using the values generated in the previous step run this command in order to create the validator address.
-
-``` bash
-> export AWS_REGION=<region>
-> export AWS_KMS_KEY_ID=alias/$VALIDATOR_KEY_ALIAS
-> export VALIDATOR_ADDRESS=`cast wallet address --aws`
-```
-
-### Generate the S3 bucket
-
-*TODO:* Automate with Terraform
-
-Reference: https://docs.hyperlane.xyz/docs/operate/validators/validator-signatures-aws
-Your Validator will post their signatures to this bucket.
-
-1. Go to AWS's S3 in the AWS console. 
-2. On the right, click the orange "Create Bucket" button 
-3. Pick an informative bucket name. 
-4. Consider choosing the same region as the KMS key you created in the previous step. 
-5. Keep the recommended "ACLs disabled" setting for object ownership. 
-6. Configure public access settings so that the relayer can read your signatures 
-   1. Uncheck "Block all public access"
-   2. Check the first two options that block access via access control lists 
-   3. Leave the last two options unchecked, we will be granting public read access via a bucket policy 
-   4. Acknowledge that these settings may result in public access to your bucket
-1. The remaining default settings are fine, click the orange "Create bucket" button on the bottom
-
-### Configure S3 bucket permissions
-
-1. Navigate back to "Identity and Access Management (IAM)" in the AWS console
-1. Under "IAM resources" you should see at least one "User", click into that
-1. Click on the name of the user that you provisioned earlier (e.g. hyperlane-validator-${chain_name})
-1. Copy the "User ARN" to your clipboard, it should look something like arn:aws:iam::791444913613:user/hyperlane-validator-${chain_name}
-1. Navigate back to "S3" in the AWS console
-1. Click on the name of the bucket you just created
-1. Just under the name of the bucket, click "Permissions"
-1. Scroll down to "Bucket policy" and click "Edit"
-1. Enter the following contents. The Bucket ARN is shown just above where you enter the policy
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": ["s3:GetObject", "s3:ListBucket"],
-      "Resource": ["${BUCKET_ARN}", "${BUCKET_ARN}/*"]
-    },
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "${USER_ARN}"
-      },
-      "Action": ["s3:DeleteObject", "s3:PutObject"],
-      "Resource": "${BUCKET_ARN}/*"
-    }
-  ]
-}
-```
-
-
-
-Update the environment variables that will be later used to generate some configuration files:
-```bash
-export VALIDATOR_BUCKET_NAME=<bucket name picked in step 3>
-export CHAIN_NAME="source"
-```
-
-### Setup validator environment with docker
 
 (Reference: https://docs.hyperlane.xyz/docs/operate/docker-quickstart#4-setup-validator-environment)
 
@@ -244,9 +246,9 @@ Send the validator some ethers from the first private key generated by anvil. Re
 > cast send  $VALIDATOR_ADDRESS --value 1ether --private-key $HYP_KEY
 ```
 
-Create the configuration files. Be sure all the environment variables mentioned above are correctly set. 
+Create the validator configuration file. Be sure all the environment variables mentioned above are correctly set. 
 ```
-> ./create_config_files.sh
+> ./create_validator_config.sh
 OK
 ```
 
