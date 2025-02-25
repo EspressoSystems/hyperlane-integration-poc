@@ -145,6 +145,11 @@ export CHAIN_NAME="source"
 # Initialize the chains with the Hyperlane contracts
 (Reference: https://docs.hyperlane.xyz/docs/guides/local-testnet-setup)
 
+First delete the filesystem registry in case you already deployed some Hyperlane contracts locally:
+```bash
+rm -Rf ~/.hyperlane/*
+```
+
 Open new terminal and launch the source chain:
 ```bash
 ./launch_source_chain
@@ -265,8 +270,6 @@ Check everything works. You should see an INFO message "INFO validator::validato
 Send a message from the source chain to the destination chain.
 ```bash
 > hyperlane send message --relay
-
-
 ```
 
 Check that the validator has successfully signed the message. The logs should contain "INFO validator::submit: Signed all queued checkpoints until index, index: 0"
