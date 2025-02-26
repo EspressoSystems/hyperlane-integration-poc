@@ -24,7 +24,7 @@
       "interchainGasPaymaster": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed",
       "protocol": "ethereum",
       "signer": {
-        "region": "$AWS_REGION",
+        "region": "$AWS_DEFAULT_REGION",
         "type": "aws",
         "id": "alias/$VALIDATOR_KEY_ALIAS"
       }
@@ -35,11 +35,11 @@
   "validator": {
     "id": "alias/$VALIDATOR_KEY_ALIAS",
     "type": "aws",
-    "region": "us-east-1"
+    "region": "$AWS_DEFAULT_REGION"
   },
   "checkpointSyncer": {
     "bucket": "$VALIDATOR_BUCKET_NAME",
-    "region": "$AWS_REGION",
+    "region": "$AWS_DEFAULT_REGION",
     "type": "s3",
     "folder": "source"
   },

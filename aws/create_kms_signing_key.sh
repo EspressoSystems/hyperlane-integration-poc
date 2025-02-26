@@ -6,7 +6,7 @@ aws kms create-key \
     --description "" \
     --key-usage SIGN_VERIFY \
     --key-spec ECC_SECG_P256K1 \
-    --region $AWS_REGION \
+    --region $AWS_DEFAULT_REGION \
     --policy file://./aws/key_policy.json > /tmp/key_result.json
 
 export KEY_ID=`jq -r ".KeyMetadata.KeyId" /tmp/key_result.json`
@@ -15,7 +15,14 @@ export KEY_ID=`jq -r ".KeyMetadata.KeyId" /tmp/key_result.json`
 aws kms create-alias \
 --alias-name alias/$VALIDATOR_KEY_ALIAS \
 --target-key-id $KEY_ID \
---region $AWS_REGION
+--region $AWS_DEFAULT_REGION
 
 echo "Key created correctly."
 cat /tmp/key_result.json
+
+
+# Update some environment variables
+export AWS_KMS_KEY_ID=alias/$VALIDATOR_KEY_ALIAS
+export VALIDATOR_ADDRESS=`cast wallet address --aws`
+
+echo "Validator address generated correctly: $VALIDATOR_ADDRESS."

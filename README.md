@@ -12,16 +12,7 @@ Everytime you open a terminal run
 
 # AWS configuration
 
-The validator uses AWS service for handling the signing key and storing its signatures in an AWS bucket.
-
-##  Configure AWS CLI
-```
-> aws configure
-AWS Access Key ID [****************3AB3]: <your access key ID>
-AWS Secret Access Key [****************tRxR]: <your secret access key>
-Default region name [us-east-1]: <aws region>
-Default output format [json]: <format>
-```
+The validator and the relayer use AWS services.
 
 ## KMS
 
@@ -35,23 +26,29 @@ Reference: https://docs.hyperlane.xyz/docs/operate/set-up-agent-keys#2-aws-kms
 2. Go to AWS's Identity and Access Management (IAM)
 3. On the left, under "Access management", click "Users".
 4. Click the orange button "Add users".
-5. Pick a friendly and informative username, like *hyperlane1*. **This username will be referenced in future steps, so if you choose a different username be sure to use your correct username in the future.**
-6. Click "Next", you do not need to assign the user any permissions.
-7. Click "Create user".
-8. Click into the user that you just created
-9. Go to Permissions policies> Add 
-9. Click on "Security Credentials" > Add Permissions > Customer Managed and select `kms_creation`. 
-10. Scroll down to "Access Keys" and click "Create Access Key"
-11. Select "Application running outside AWS" and click "Next"
-12. Click "Next", no need to add a description tag
-13. Click "Create access key"
-14. Copy the "Access key ID" and "Secret access key" to a safe place. **These will be passed to your Hyperlane Relayer as environment variables.**
-    Set the following environment variables:
+5. Pick a friendly and informative username, like *hyperlane1*. 
+6. Select "Attach policies directly". Click on "Add permissions".
+7. Pick `kms_creation` and `AWSKeyManagementServicePowerUser`. Then click on the corresponding checkbox. Click on Next and then click on "Add permissions".
+8. Click on "Next"
+9. Click on "Create user"
+10. Click on the user you created.
+11. Click on "Security credentials"
+8. Scroll down to "Access Keys" and click on "Create Access Key"
+9. Select "Application running outside AWS" and click "Next"
+10. Click "Next", no need to add a description tag
+11. Click "Create access key"
+12. Copy the "Access key ID" and "Secret access key" to a safe place.
+13. Go to the IAM home and copy the Account ID (see panel "AWS Account" at the top right)
+14. Identify your AWS region: Check at the beginning of the url e.g.: https://us-east-1.console.aws.amazon means your region is us-east-1.
+    
+Set the following environment variables:
 
 ```bash
-export AWS_ACCESS_KEY_ID=<Access key ID obtained in step 14>
-export AWS_SECRET_ACCESS_KEY=<Access secret key obyained in step 14>
-export ACCOUNT_ID=<TODO where is it?>
+export AWS_USER_NAME=<Copy the name chosen in step 5>
+export AWS_ACCESS_KEY_ID=<Access key ID obtained in step 12>
+export AWS_SECRET_ACCESS_KEY=<Access secret key obyained in step 12>
+export ACCOUNT_ID=<Copy the account id obtained in step 13>
+export AWS_DEFAULT_REGION=<See step 14>
 ```
 
 Configure the aws cli:
@@ -68,10 +65,9 @@ Default output format [json]: [ENTER]
 Pick some alias for the key, define the AWS region name
 ```bash
 export VALIDATOR_KEY_ALIAS=<validator signer key alias>
-export AWS_REGION=<region>
 ```
 
-Create the key using aws cli:
+Create the signing key using aws cli:
 ```bash
 > ./aws/create_kms_signing_key.sh
  Signing key created correctly
@@ -95,16 +91,9 @@ Create the key using aws cli:
         "MultiRegion": false
     }
 }
-
-
-### Generate the validator address
-
-Using the values generated in the previous step run this command in order to create the validator address.
-
-``` bash
-> export AWS_KMS_KEY_ID=alias/$VALIDATOR_KEY_ALIAS
-> export VALIDATOR_ADDRESS=`cast wallet address --aws`
 ```
+
+Note that this script also generates the validator address and put it in the environment variable `VALIDATOR_ADDRESS`.
 
 ### Generate the S3 bucket
 
