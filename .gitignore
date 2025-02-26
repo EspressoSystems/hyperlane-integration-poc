@@ -6,6 +6,9 @@ configs/core-config.yaml
 *.log
 LOG*
 
+# AWS
+key_policy.json
+
 # Hyperlane files
 *.sst
 CURRENT

@@ -14,6 +14,15 @@ Everytime you open a terminal run
 
 The validator uses AWS service for handling the signing key and storing its signatures in an AWS bucket.
 
+##  Configure AWS CLI
+```
+> aws configure
+AWS Access Key ID [****************3AB3]: <your access key ID>
+AWS Secret Access Key [****************tRxR]: <your secret access key>
+Default region name [us-east-1]: <aws region>
+Default output format [json]: <format>
+```
+
 ## KMS
 
 ### Create IAM user
@@ -26,11 +35,12 @@ Reference: https://docs.hyperlane.xyz/docs/operate/set-up-agent-keys#2-aws-kms
 2. Go to AWS's Identity and Access Management (IAM)
 3. On the left, under "Access management", click "Users".
 4. Click the orange button "Add users".
-5. Pick a friendly and informative username, like hyperlane-validator-${chain_name} or hyperlane-relayer-${chain_name}. **This username will be referenced in future steps, so if you choose a different username be sure to use your correct username in the future.**
+5. Pick a friendly and informative username, like *hyperlane1*. **This username will be referenced in future steps, so if you choose a different username be sure to use your correct username in the future.**
 6. Click "Next", you do not need to assign the user any permissions.
 7. Click "Create user".
 8. Click into the user that you just created
-9. Click the "Security Credentials" tab
+9. Go to Permissions policies> Add 
+9. Click on "Security Credentials" > Add Permissions > Customer Managed and select `kms_creation`. 
 10. Scroll down to "Access Keys" and click "Create Access Key"
 11. Select "Application running outside AWS" and click "Next"
 12. Click "Next", no need to add a description tag
@@ -41,42 +51,57 @@ Reference: https://docs.hyperlane.xyz/docs/operate/set-up-agent-keys#2-aws-kms
 ```bash
 export AWS_ACCESS_KEY_ID=<Access key ID obtained in step 14>
 export AWS_SECRET_ACCESS_KEY=<Access secret key obyained in step 14>
+export ACCOUNT_ID=<TODO where is it?>
 ```
 
+Configure the aws cli:
+```
+> aws configure
+AWS Access Key ID [****************VTNP]: <your AWS Access Key ID generated above>
+AWS Secret Access Key [****************RLcD]:  <your AWS secret access key generated above>
+Default region name [us-east-1]: <you AWS region name>
+Default output format [json]: [ENTER]
+```
 
 ### Create KMS key
-1. Go to AWS's Key Management Service (KMS) in the AWS console.
-1. Ensure you are in the region you want to create the key in. This can be confirmed by viewing the region at the top right of the console, or by finding the name in the URL's subdomain (e.g. us-west-2.console.aws.amazon.com means you're operating in the region us-west-2).
-1. On the left, click "Customer managed keys".
-1. Click "Create key".
-1. Select the "Asymmetric" key type.
-1. Select the "Sign and verify" key usage.
-1. Select the ECC_SECG_P256K1 key spec.
-1. Click "Next".
-1. Set the Alias to something friendly and informative.
-1. While not necessary, feel free to write a description and add any tags that you think will be useful.
-1. Click "Next".
-1. A key administrator is not required, but if you want, you can select one.
-1. Click "Next".
-1. Give usage permissions to the IAM user you created in section #1.
-1. Click "Next".
-1. In the Review page, scroll to the "Key policy". The generated key policy is acceptable, but you can make the access even less permissive if you wish by:
-   1. Removing the kms:DescribeKey and kms:Verify actions from the statement whose "Sid" is "Allow use of the key"
-   1. Removing the entire statement whose "Sid" is "Allow attachment of persistent resources".
-1. Click "Finish"
 
-Set the following environment variable with the alias picked in step 9.
-
+Pick some alias for the key, define the AWS region name
 ```bash
-export VALIDATOR_KEY_ALIAS=<validator signer key alias picked in step 9>
+export VALIDATOR_KEY_ALIAS=<validator signer key alias>
+export AWS_REGION=<region>
 ```
+
+Create the key using aws cli:
+```bash
+> ./aws/create_kms_signing_key.sh
+ Signing key created correctly
+ {
+    "KeyMetadata": {
+        "AWSAccountId": "861012453243",
+        "KeyId": "b661293a-6ead-452b-86e2-401c1d841e4e",
+        "Arn": "arn:aws:kms:us-east-1:861012453243:key/b661293a-6ead-452b-86e2-401c1d841e4e",
+        "CreationDate": "2025-02-26T14:42:10.458000-03:00",
+        "Enabled": true,
+        "Description": "",
+        "KeyUsage": "SIGN_VERIFY",
+        "KeyState": "Enabled",
+        "Origin": "AWS_KMS",
+        "KeyManager": "CUSTOMER",
+        "CustomerMasterKeySpec": "ECC_SECG_P256K1",
+        "KeySpec": "ECC_SECG_P256K1",
+        "SigningAlgorithms": [
+            "ECDSA_SHA_256"
+        ],
+        "MultiRegion": false
+    }
+}
+
 
 ### Generate the validator address
 
 Using the values generated in the previous step run this command in order to create the validator address.
 
 ``` bash
-> export AWS_REGION=<region>
 > export AWS_KMS_KEY_ID=alias/$VALIDATOR_KEY_ALIAS
 > export VALIDATOR_ADDRESS=`cast wallet address --aws`
 ```
