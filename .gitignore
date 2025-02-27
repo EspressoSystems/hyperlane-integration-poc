@@ -1,12 +1,13 @@
 .idea
 node_modules
-.env.source
+.env
 *.log
 LOG*
 
 # AWS
 key_policy.json
 user-policy.json
+bucket-policy.json
 
 # Hyperlane files
 configs/config.json

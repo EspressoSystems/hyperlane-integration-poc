@@ -7,6 +7,7 @@ aws kms create-key \
     --key-usage SIGN_VERIFY \
     --key-spec ECC_SECG_P256K1 \
     --region $AWS_DEFAULT_REGION \
+    --output json \
     --policy file://./aws/key_policy.json > /tmp/key_result.json
 
 export KEY_ID=`jq -r ".KeyMetadata.KeyId" /tmp/key_result.json`
