@@ -14,9 +14,7 @@ Everytime you open a terminal run
 
 The validator and the relayer use AWS services.
 
-## KMS
-
-### Create IAM user
+## Create IAM user
 
 Reference: https://docs.hyperlane.xyz/docs/operate/set-up-agent-keys#2-aws-kms
 
@@ -56,7 +54,7 @@ export AWS_ACCOUNT_ID=<Copy the account id obtained in step 13>
 export AWS_DEFAULT_REGION=<See step 14>
 ```
 
-### Create KMS key
+## Create KMS key
 
 Pick some alias for the key, define the AWS region name
 ```bash
@@ -89,16 +87,14 @@ Create the signing key using aws cli:
 }
 ```
 
-Update some environment variables
+Update some environment variables.
 
 ```bash
 export AWS_KMS_KEY_ID=alias/$VALIDATOR_KEY_ALIAS
 export VALIDATOR_ADDRESS=`cast wallet address --aws`
 ```
 
-Note that this script also generates the validator address and put it in the environment variable `VALIDATOR_ADDRESS`.
-
-### Generate the S3 bucket
+## Generate the S3 bucket
 
 Create the bucket and configure the policy of the bucket.
 ```
@@ -200,7 +196,6 @@ explorer (y/N) [PUSH ENTER]
 ? Is this deployment plan correct? (Y/n) [PUSH ENTER]
 ```
 
-
 # Spin up a validator and a relayer
 
 (Reference: https://docs.hyperlane.xyz/docs/operate/docker-quickstart#4-setup-validator-environment)
@@ -242,6 +237,8 @@ Check everything works, that is there are no ugly error messages.
 ```bash
 > docker logs -f relayer 
 ```
+
+# Send a test message between two chains
 
 Send a test message from the source chain to the destination chain.
 ```bash
