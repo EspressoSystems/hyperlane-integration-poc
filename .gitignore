@@ -1,8 +1,6 @@
 .idea
 node_modules
 .env.source
-source/config.json
-configs/core-config.yaml
 *.log
 LOG*
 
@@ -11,6 +9,8 @@ key_policy.json
 user-policy.json
 
 # Hyperlane files
+configs/config.json
+configs/core-config.yaml
 *.sst
 CURRENT
 IDENTITY

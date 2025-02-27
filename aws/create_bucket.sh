@@ -4,4 +4,4 @@ aws s3api put-public-access-block --bucket $VALIDATOR_BUCKET_NAME --public-acces
 envsubst < aws/bucket-policy.json.template > aws/bucket-policy.json
 aws s3api put-bucket-policy --bucket $VALIDATOR_BUCKET_NAME --policy file://./aws/bucket-policy.json
 
-echo "Bucket created."
+echo "Bucket created and configured."

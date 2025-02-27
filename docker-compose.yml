@@ -16,7 +16,7 @@ services:
       - "9091:9091/tcp"
     command: ./validator
     volumes:
-      - ./${SERVICE_NAME}/config.json:/config.json
+      - ./configs/config.json:/config.json
       - ./${SERVICE_NAME}/hyperlane_db:/mnt/hyperlane_db
 
 
@@ -27,7 +27,7 @@ services:
     command: ./relayer
     container_name: relayer
     volumes:
-      - ./${SERVICE_NAME}/config.json:/config.json
+      - ./configs/config.json:/config.json
       - ./relayer/hyperlane_db:/mnt/hyperlane_db
 
 
