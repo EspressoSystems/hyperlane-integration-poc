@@ -18,8 +18,6 @@ The validator and the relayer use AWS services.
 
 ### Create IAM user
 
-*TODO:* Automate with Terraform
-
 Reference: https://docs.hyperlane.xyz/docs/operate/set-up-agent-keys#2-aws-kms
 
 1. Go to [aws.amazon.com](aws.amazon.com) and login.
@@ -102,80 +100,11 @@ Note that this script also generates the validator address and put it in the env
 
 ### Generate the S3 bucket
 
-*TODO:* Automate with Terraform
-
-Create the bucket.
-**TODO** create bucket so that public access is not blocked
-
+Create the bucket and configure the policy of the bucket.
 ```
 > export VALIDATOR_BUCKET_NAME=<pick a bucket name>
-> aws s3api create-bucket --bucket $VALIDATOR_BUCKET_NAME --region $AWS_DEFAULT_REGION 
+> ./aws/create_bucket.sh 
 ```
-
-Reference: https://docs.hyperlane.xyz/docs/operate/validators/validator-signatures-aws
-Your Validator will post their signatures to this bucket.
-
-1. Go to AWS's S3 in the AWS console.
-2. On the right, click the orange "Create Bucket" button
-3. Pick an informative bucket name.
-4. Consider choosing the same region as the KMS key you created in the previous step.
-5. Keep the recommended "ACLs disabled" setting for object ownership.
-6. Configure public access settings so that the relayer can read your signatures
-   1. Uncheck "Block all public access"
-   2. Check the first two options that block access via access control lists
-   3. Leave the last two options unchecked, we will be granting public read access via a bucket policy
-   4. Acknowledge that these settings may result in public access to your bucket
-1. The remaining default settings are fine, click the orange "Create bucket" button on the bottom
-
-
-
-### Configure S3 bucket permissions
-
-**TODO** Automate the generation of bucket-policy.json
-
-```
-> aws s3api put-bucket-policy --bucket $VALIDATOR_BUCKET_NAME --policy file://./aws/bucket-policy.json
-```
-
-1. Navigate back to "Identity and Access Management (IAM)" in the AWS console
-1. Under "IAM resources" you should see at least one "User", click into that
-1. Click on the name of the user that you provisioned earlier (e.g. hyperlane-validator-${chain_name})
-1. Copy the "User ARN" to your clipboard, it should look something like arn:aws:iam::791444913613:user/hyperlane-validator-${chain_name}
-1. Navigate back to "S3" in the AWS console
-1. Click on the name of the bucket you just created
-1. Just under the name of the bucket, click "Permissions"
-1. Scroll down to "Bucket policy" and click "Edit"
-1. Enter the following contents. The Bucket ARN is shown just above where you enter the policy
-   
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": ["s3:GetObject", "s3:ListBucket"],
-      "Resource": ["${BUCKET_ARN}", "${BUCKET_ARN}/*"]
-    },
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "${USER_ARN}"
-      },
-      "Action": ["s3:DeleteObject", "s3:PutObject"],
-      "Resource": "${BUCKET_ARN}/*"
-    }
-  ]
-}
-```
-1. Click "Save changes"
-
-
-Update the environment variables that will be later used to generate some configuration files:
-```bash
-export CHAIN_NAME="source"
-```
-
 
 # Initialize the chains with the Hyperlane contracts
 (Reference: https://docs.hyperlane.xyz/docs/guides/local-testnet-setup)
