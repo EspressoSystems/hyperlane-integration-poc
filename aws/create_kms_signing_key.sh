@@ -21,8 +21,3 @@ echo "Key created correctly."
 cat /tmp/key_result.json
 
 
-# Update some environment variables
-export AWS_KMS_KEY_ID=alias/$VALIDATOR_KEY_ALIAS
-export VALIDATOR_ADDRESS=`cast wallet address --aws`
-
-echo "Validator address generated correctly: $VALIDATOR_ADDRESS."

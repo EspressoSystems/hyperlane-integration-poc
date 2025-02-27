@@ -34,7 +34,7 @@
           shellHook = ''
             pnpm i
             export PATH="$PATH:$(pwd)/node_modules/.bin"
-            > export HYP_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+            export HYP_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
           '';
         };
       });
