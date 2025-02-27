@@ -16,8 +16,6 @@ The validator and the relayer use AWS services.
 
 ## Create IAM user
 
-Reference: https://docs.hyperlane.xyz/docs/operate/set-up-agent-keys#2-aws-kms
-
 1. Go to [aws.amazon.com](aws.amazon.com) and login.
 1. Go to AWS's Identity and Access Management (IAM)
 1. On the left, under "Access management", click "Policies".
@@ -106,9 +104,8 @@ Create the bucket and configure the policy of the bucket.
 ```
 
 # Initialize the chains with the Hyperlane contracts
-(Reference: https://docs.hyperlane.xyz/docs/guides/local-testnet-setup)
 
-Do a bit of cleanup if you already 
+Do a bit of cleanup if you already followed the steps of this document.
 ```bash
 ./cleanup.sh
 ```
@@ -219,7 +216,7 @@ OK
 
 Launch the validator docker
 ```bash
-> docker compose --env-file .env.source up source-validator -d
+> docker compose --env-file .env up source-validator -d
 ```
 
 Check everything works, that is there are no ugly error messages.
@@ -236,7 +233,7 @@ Note the validator and relayer use the same address. TODO change this at some po
 
 Launch the relayer docker.
 ```bash
-> docker compose --env-file .env.source up relayer -d
+> docker compose --env-file .env up relayer -d
 ```
 
 Check everything works, that is there are no ugly error messages.
