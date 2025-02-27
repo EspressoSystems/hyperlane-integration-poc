@@ -250,8 +250,7 @@ explorer (y/N) [PUSH ENTER]
 ```
 
 
-# Spin up a validator
-
+# Spin up validator and relayer
 
 (Reference: https://docs.hyperlane.xyz/docs/operate/docker-quickstart#4-setup-validator-environment)
 
@@ -272,9 +271,20 @@ Launch the validator docker
 > docker compose --env-file .env.source up source-validator -d
 ```
 
-Check everything works. You should see an INFO message "INFO validator::validator: Successfully announced validator..."
+Check everything works, that is there are no ugly error messages.
 ```bash
 > docker logs -f source-validator 
+```
+
+
+Launch the relayer docker
+```bash
+> docker compose --env-file .env.source up relayer -d
+```
+
+Check everything works, that is there are no ugly error messages.
+```bash
+> docker logs -f relayer 
 ```
 
 Send a message from the source chain to the destination chain.
