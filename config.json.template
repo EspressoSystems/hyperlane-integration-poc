@@ -73,6 +73,5 @@
     "type": "s3",
     "folder": "source"
   },
-  "reorgPeriod": 14,
-  "metricsPort": "9090"
+  "reorgPeriod": 14
 }

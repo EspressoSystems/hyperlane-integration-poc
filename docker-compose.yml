@@ -13,9 +13,8 @@ services:
   source-validator:
     container_name: source-validator
     <<: *common
-    ports:
-      - "9091:9091/tcp"
-    command: ./validator
+
+    command: ./validator --metricsPort="9090" # TODO make configurable
     volumes:
       - ./configs/config.json:/config.json
       - ./${SERVICE_NAME}/hyperlane_db:/mnt/hyperlane_db
@@ -23,9 +22,8 @@ services:
 
   relayer:
     <<: *common
-    ports:
-      - "9092:9092/tcp"
-    command: ./relayer
+
+    command: ./relayer --metricsPort="9091" # TODO make configurable
     container_name: relayer
     volumes:
       - ./configs/config.json:/config.json
