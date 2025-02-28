@@ -7,7 +7,7 @@ Example of an integration of hyperlane with Espresso.
 Everytime you open a terminal run
 
 ```bash
-> ./launch_shell
+> ./launch_shell.sh
 ```
 
 # AWS configuration
@@ -169,7 +169,7 @@ ETH) (y/N) [PUSH ENTER]
 ```
 
 Note that it is not necessary to initialize the configuration of the core contracts because it is already hardcoded in `configs/core-config.yaml`.
-However, this file depends on the agents' address and thus needs to be generated with the following command:
+However, this file depends on the agents' addresses and thus needs to be generated with the following command:
 
 ```
 > ./create_contracts_config.sh
@@ -200,7 +200,8 @@ explorer (y/N) [PUSH ENTER]
 
 Deploy the Espresso app contracts on both chains:
 ```bash
-./deploy_espresso_app_contracts.sh
+> ./deploy_espresso_app_contracts.sh
+
 ```
 
 # Spin up a validator and a relayer
@@ -259,10 +260,30 @@ All messages processed for tx 0xeca30dd44c3a3a765a0d73f58b64449260134c3d029e3492
 
 ## Send a message between Espresso apps deployed on different chains
 
+Check the counter value on the destination app before sending the message
+
+```bash
+> ./check_counter_destination_chain.sh 
+Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. Visit https://book.getfoundry.sh/announcements for more information. 
+To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. 
+
+0x0000000000000000000000000000000000000000000000000000000000000002
+```
+
 ```bash
 > ./send_message.sh
 ```
 
+
+Wait a few seconds and check the counter value on the destination app again. It should be incremented by one.
+
+```bash
+> ./check_counter_destination_chain.sh 
+Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. Visit https://book.getfoundry.sh/announcements for more information. 
+To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. 
+
+0x0000000000000000000000000000000000000000000000000000000000000003
+```
 
 # References
 
