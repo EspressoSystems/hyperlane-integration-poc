@@ -1,15 +1,24 @@
 .idea
 node_modules
-.env.source
-source/config.json
-configs/core-config.yaml
+.env
 *.log
 LOG*
 
+# AWS
+key_policy.json
+user-policy.json
+bucket-policy.json
+
 # Hyperlane files
+configs/config.json
+configs/core-config.yaml
 *.sst
 CURRENT
 IDENTITY
 LOCK
 MANIFEST-*
 OPTIONS-*
+
+# Forge
+cache
+out

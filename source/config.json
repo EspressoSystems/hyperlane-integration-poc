@@ -1,7 +1,7 @@
 {
   "chains": {
     "source": {
-      "name": "$CHAIN_NAME",
+      "name": "source",
       "chainId": 31337,
       "customRpcUrls": "http://127.0.0.1:8545",
       "rpcUrls": [
@@ -24,9 +24,9 @@
       "interchainGasPaymaster": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed",
       "protocol": "ethereum",
       "signer": {
-        "region": "$AWS_DEFAULT_REGION",
+        "region": "us-east-1",
         "type": "aws",
-        "id": "alias/$VALIDATOR_KEY_ALIAS"
+        "id": "alias/signer8"
       }
     },
     "destination": {
@@ -55,7 +55,7 @@
           "signer": {
             "region": "us-east-1",
             "type": "aws",
-            "id": "alias/$VALIDATOR_KEY_ALIAS"
+            "id": "alias/signer8"
           }
     }
   },
@@ -63,15 +63,16 @@
   "originChainName": "source",
   "db": "/mnt/hyperlane_db",
   "validator": {
-    "id": "alias/$VALIDATOR_KEY_ALIAS",
+    "id": "alias/signer8",
     "type": "aws",
-    "region": "$AWS_DEFAULT_REGION"
+    "region": "us-east-1"
   },
   "checkpointSyncer": {
-    "bucket": "$VALIDATOR_BUCKET_NAME",
-    "region": "$AWS_DEFAULT_REGION",
+    "bucket": "hyperlane-bucket8",
+    "region": "us-east-1",
     "type": "s3",
     "folder": "source"
   },
-  "reorgPeriod": 14
+  "reorgPeriod": 14,
+  "metricsPort": "9090"
 }

@@ -1,25 +1,33 @@
-x-common-attributes: &common-validator
+x-common-attributes: &common
   image: gcr.io/abacus-labs-dev/hyperlane-agent:agents-v1.1.0
-  command: ./validator
-  container_name: ${SERVICE_NAME}-validator
   environment:
     CONFIG_FILES: /config.json
     AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
     AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-  volumes:
-    - ./${SERVICE_NAME}/hyperlane_db:/mnt/hyperlane_db
-    - ./${SERVICE_NAME}/config.json:/config.json
   restart: unless-stopped
   network_mode: "host"
 
 
+
 services:
   source-validator:
-    <<: *common-validator
-    ports:
-      - "9091:9090/tcp"
+    container_name: source-validator
+    <<: *common
 
-#  destination-validator:
-#    <<: *common-validator
-#    ports:
-#      - "9092:9090/tcp"
+    command: ./validator --metricsPort="9090" # TODO make configurable
+    volumes:
+      - ./configs/config.json:/config.json
+      - ./${SERVICE_NAME}/hyperlane_db:/mnt/hyperlane_db
+
+
+  relayer:
+    <<: *common
+
+    command: ./relayer --metricsPort="9091" # TODO make configurable
+    container_name: relayer
+    volumes:
+      - ./configs/config.json:/config.json
+      - ./relayer/hyperlane_db:/mnt/hyperlane_db
+
+
+
