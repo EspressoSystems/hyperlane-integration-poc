@@ -18,3 +18,7 @@ IDENTITY
 LOCK
 MANIFEST-*
 OPTIONS-*
+
+# Forge
+cache
+out
