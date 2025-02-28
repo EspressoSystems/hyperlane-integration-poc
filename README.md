@@ -3,9 +3,9 @@
 This project allows to send a message between two chains deployed locally using Hyperlane. 
 More specifically by following the steps below you will:
 1. Spin up two local chains with Anvil.
-2. Deploy Hyperlane contracts on both chains configure in such way it support a MultiSig ISM with one signer.
-3. Configure AWS objects (signing keys, buckets) to be used by the Hyperlane agents (i.e. the relayer and validator)
-4. Spin up a relayer and a validator using docker
+2. Deploy Hyperlane contracts on both chains configured in such way it supports a MultiSig ISM with one signer.
+3. Configure AWS objects (signing keys, buckets) to be used by the Hyperlane agents (i.e. the relayer and validator).
+4. Spin up a relayer and a validator using docker.
 5. Deploy an app on both source chain and destination chain that can send message to the other chain and increments a counter when a message is received.
 6. Run a script to send a message from the source app to the destination app and check that the message was sent correctly.
 
