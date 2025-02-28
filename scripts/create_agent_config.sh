@@ -1,3 +1,3 @@
 envsubst < config.json.template > configs/config.json
-envsubst < env.source.template > .env
+envsubst < env.template > .env
 echo "OK"
