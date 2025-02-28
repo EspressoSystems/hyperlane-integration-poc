@@ -1,3 +1,6 @@
 [submodule "espresso-app/lib/forge-std"]
 	path = espresso-app/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "espresso-app/lib/hyperlane-monorepo"]
+	path = espresso-app/lib/hyperlane-monorepo
+	url = https://github.com/hyperlane-xyz/hyperlane-monorepo
