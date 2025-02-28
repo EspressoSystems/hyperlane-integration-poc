@@ -198,6 +198,8 @@ explorer (y/N) [PUSH ENTER]
 Deploy the Espresso app contracts on both chains:
 ```bash
 > deploy_espresso_app_contracts.sh
+Espresso app contract successfully deployed on the source chain at address 0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44.
+Espresso app contract successfully deployed on the destination chain at address 0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1.
 ```
 
 # Spin up a validator and a relayer

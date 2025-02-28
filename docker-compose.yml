@@ -8,6 +8,7 @@ x-common-attributes: &common
   network_mode: "host"
 
 
+
 services:
   source-validator:
     container_name: source-validator
