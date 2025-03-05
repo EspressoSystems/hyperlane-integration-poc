@@ -62,16 +62,12 @@ export AWS_ACCOUNT_ID=<Copy the account id obtained in step 24>
 export AWS_DEFAULT_REGION=<See step 25>
 ```
 
-## Create KMS key
+## Create KMS key and related addresses
 
-Pick some alias for the key, define the AWS region name
-```bash
-export VALIDATOR_KEY_ALIAS=<validator signer key alias>
-```
+Note the syntax of the command below! This script must update the environment variables of the shell.
 
-Create the signing key and related addresses:
 ```bash
-> ./aws/create_keys_and_addresses.sh
+> . aws/create_keys_and_addresses.sh
  Signing key created correctly
  {
     "KeyMetadata": {
@@ -93,6 +89,8 @@ Create the signing key and related addresses:
         "MultiRegion": false
     }
 }
+Validator address: 0x726402Ed21c3a7BaABc500f9486CE76b30158636
+Relayer address: 0x726402Ed21c3a7BaABc500f9486CE76b30158636
 ```
 
 ## Generate the S3 bucket
@@ -117,9 +115,13 @@ TODO: PR with launch_caff_node.sh script
 TODO change bash code below
 
 ```bash
-cd <Path to nitro-testnode repository>
-./launch-test-caff-node.bash
+> cd <Path to nitro-testnode repository>
+> ./launch-test-caff-node.bash
+...
+Caff node launched successfully.
 ```
+
+Wait for the script to finish. It takes a while.
 
 ## Launch destination chain (Vanilla Anvil node)
 
@@ -218,7 +220,7 @@ explorer (y/N) [PUSH ENTER]
 
 Deploy the Espresso app contracts on both chains:
 ```bash
-> deploy_espresso_app_contracts.sh
+> . deploy_espresso_app_contracts.sh
 Espresso app contract successfully deployed on the source chain at address 0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44.
 Espresso app contract successfully deployed on the destination chain at address 0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1.
 ```

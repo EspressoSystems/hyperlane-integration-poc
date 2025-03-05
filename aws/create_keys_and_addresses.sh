@@ -1,3 +1,5 @@
+export VALIDATOR_KEY_ALIAS="$AWS_USER_NAME-signer"
+
 # Instantiate the policy
 envsubst < aws/key_policy.json.template > aws/key_policy.json
 

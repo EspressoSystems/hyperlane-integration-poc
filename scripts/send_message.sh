@@ -4,4 +4,4 @@ export DESTINATION_APP_ADDRESS=`jq -r ".deployedTo" $ESPRESSO_APP_CONTRACTS_DATA
 
 
 cast send $SOURCE_APP_ADDRESS "sendMessage(address)" "$DESTINATION_APP_ADDRESS" --private-key $DEPLOYER_PRIVATE_KEY --rpc-url=$SOURCE_CHAIN_RPC_URL
-Echo "Sending message to $DESTINATION_APP_ADDRESS on destination chain..."
+echo "Sending message to $DESTINATION_APP_ADDRESS on destination chain..."
