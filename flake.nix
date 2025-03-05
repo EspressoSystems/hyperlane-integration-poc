@@ -34,6 +34,7 @@
           shellHook = ''
             pnpm i
             export PATH="$PATH:$(pwd)/node_modules/.bin:$(pwd)/scripts"
+            export FOUNDRY_DISABLE_NIGHTLY_WARNING=true
             source .hyperlane.env
           '';
         };
