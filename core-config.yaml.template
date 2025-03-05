@@ -5,13 +5,13 @@ defaultIsm:
   type: messageIdMultisigIsm
   validators:
     - "$VALIDATOR_ADDRESS"
-owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+owner: "$DEPLOYER_ADDRESS"
 proxyAdmin:
-  owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+  owner: "$DEPLOYER_ADDRESS"
 requiredHook:
-  beneficiary: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+  beneficiary: "$DEPLOYER_ADDRESS"
   maxProtocolFee: "100000000000000000"
-  owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+  owner: "$DEPLOYER_ADDRESS"
   protocolFee: "0"
   type: protocolFee
 

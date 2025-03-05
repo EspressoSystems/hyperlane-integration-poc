@@ -199,7 +199,7 @@ Deploy the Hyperlane contracts on the destination chain.
 > hyperlane core deploy -o configs/core-config.yaml
 ? Select network type (Use arrow keys) [PICK Testnet]
 ? Select chain to connect: [TYPE destination]
-? Do you want to use an API key to verify on this (source) chain's block 
+? Do you want to use an API key to verify on this (destination) chain's block 
 explorer (y/N) [PUSH ENTER]
 ? Is this deployment plan correct? (Y/n) [PUSH ENTER]
 ```
@@ -237,7 +237,7 @@ Check everything works, that is there are no ugly error messages.
 Send the relayer some ethers on the **destination** chain.
 Note the validator and relayer use the same address. *TODO* change this at some point.
 ```
-> cast send  $VALIDATOR_ADDRESS --value 1ether --private-key $HYP_KEY --rpc-url $ANVIL_DESTINATION_CHAIN_RPC_URL
+> cast send  $VALIDATOR_ADDRESS --value 1ether --private-key $HYP_KEY --rpc-url $DESTINATION_CHAIN_RPC_URL
 ```
 
 Launch the relayer docker.
@@ -285,7 +285,7 @@ To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment.
 Wait a few seconds and check the counter value on the destination app again. It should be incremented by one.
 
 ```bash
-> ./check_counter_destination_chain.sh 
+> check_counter_destination_chain.sh 
 Warning: This is a nightly build of Foundry. It is recommended to use the latest stable version. Visit https://book.getfoundry.sh/announcements for more information. 
 To mute this warning set `FOUNDRY_DISABLE_NIGHTLY_WARNING` in your environment. 
 

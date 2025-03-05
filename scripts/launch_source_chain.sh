@@ -1,1 +1,1 @@
-anvil --port 8545 --chain-id 31337 --block-time 5
+anvil --port $RPC_SOURCE_CHAIN_PORT --chain-id $SOURCE_CHAIN_ID --block-time 5
