@@ -108,11 +108,24 @@ cleanup.sh
 
 ## Launch source chain (Caff node)
 
-In another terminal follow these steps in order to deploy a local Caff nodes
-(Ssee also )
+In another terminal follow these steps in order to deploy a local Caff nodes.
+(See also https://github.com/EspressoSystems/nitro-testnode?tab=readme-ov-file#running-the-smoke-tests-for-the-caffeinated-node)
 
 ```bash
-> cd <Path to nitro-testnode repository>
+> git clone git@github.com:EspressoSystems/nitro-testnode.git
+> cd nitro-testnode
+> git submodule update --init
+```
+Create a Github Personal Access Token (PAT) following [Creating a personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic).
+
+Provide Docker with the PAT.
+```bash
+> export CR_PAT=<your PAT>
+> echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
+```
+
+Launch the Caffeinated node.
+```bash
 > ./launch-test-caff-node.bash
 ...
 *** Caff node launched successfully. ***
