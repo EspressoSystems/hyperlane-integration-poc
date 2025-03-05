@@ -110,18 +110,17 @@ cleanup.sh
 
 ## Launch source chain (Caff node)
 
-TODO: expand
-TODO: PR with launch_caff_node.sh script
-TODO change bash code below
+In another terminal follow these steps in order to deploy a local Caff nodes
+(Ssee also )
 
 ```bash
 > cd <Path to nitro-testnode repository>
 > ./launch-test-caff-node.bash
 ...
-Caff node launched successfully.
+*** Caff node launched successfully. ***
 ```
 
-Wait for the script to finish. It takes a while.
+Wait for the script to finish (until you get "*** Caff node launched successfully. ***"). It takes a while.
 
 ## Launch destination chain (Vanilla Anvil node)
 
@@ -289,6 +288,22 @@ Wait a few seconds and check the counter value on the destination app again. It 
 > check_counter_destination_chain.sh 
 0x0000000000000000000000000000000000000000000000000000000000000001
 ```
+
+# Shutdown
+
+Once you are done you can shut down the docker containers like this:
+* In the `nitro-testnode` repository/directory.
+
+```bash
+> docker compose down
+```
+* In this repository/directory```
+
+```bash
+> docker compose down
+```
+
+* Close the terminal running the anvil node (destination chain).
 
 # References
 
