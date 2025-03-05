@@ -1,3 +1,5 @@
+export VALIDATOR_KEY_ALIAS="$AWS_USER_NAME-signer"
+
 # Instantiate the policy
 envsubst < aws/key_policy.json.template > aws/key_policy.json
 
@@ -18,7 +20,15 @@ aws kms create-alias \
 --target-key-id $KEY_ID \
 --region $AWS_DEFAULT_REGION
 
-echo "Key created correctly."
+echo "KMS signing key created correctly. \n\n"
 cat /tmp/key_result.json
 
+export AWS_KMS_KEY_ID=alias/$VALIDATOR_KEY_ALIAS
+export VALIDATOR_ADDRESS=`cast wallet address --aws`
+
+# TODO maybe change at some point
+export RELAYER_ADDRESS=$VALIDATOR_ADDRESS
+
+echo "Validator address: $VALIDATOR_ADDRESS"
+echo "Relayer address: $RELAYER_ADDRESS"
 

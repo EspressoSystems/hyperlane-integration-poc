@@ -2,10 +2,10 @@
   "chains": {
     "source": {
       "name": "$CHAIN_NAME",
-      "chainId": 31337,
-      "customRpcUrls": "http://127.0.0.1:8545",
+      "chainId": $SOURCE_CHAIN_ID,
+      "customRpcUrls": "$SOURCE_CHAIN_RPC_URL",
       "rpcUrls": [
-          {"http":"http://127.0.0.1:8545"}
+          {"http":"$SOURCE_CHAIN_RPC_URL"}
       ],
       "staticMerkleRootMultisigIsmFactory": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       "staticMessageIdMultisigIsmFactory": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
@@ -31,10 +31,10 @@
     },
     "destination": {
           "name": "destination",
-          "chainId": 31338,
-          "customRpcUrls": "http://127.0.0.1:8546",
+          "chainId": $DESTINATION_CHAIN_ID,
+          "customRpcUrls": "$DESTINATION_CHAIN_RPC_URL",
           "rpcUrls": [
-            {"http":"http://127.0.0.1:8546"}
+            {"http":"$DESTINATION_CHAIN_RPC_URL"}
           ],
           "staticMerkleRootMultisigIsmFactory": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
           "staticMessageIdMultisigIsmFactory": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
@@ -53,7 +53,7 @@
           "interchainGasPaymaster": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed",
           "protocol": "ethereum",
           "signer": {
-            "region": "us-east-1",
+            "region": "$AWS_DEFAULT_REGION",
             "type": "aws",
             "id": "alias/$VALIDATOR_KEY_ALIAS"
           }

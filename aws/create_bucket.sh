@@ -1,3 +1,4 @@
+export VALIDATOR_BUCKET_NAME="$AWS_USER_NAME-bucket"
 aws s3api create-bucket --bucket $VALIDATOR_BUCKET_NAME --region $AWS_DEFAULT_REGION
 aws s3api put-public-access-block --bucket $VALIDATOR_BUCKET_NAME --public-access-block-configuration \
   "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false"
