@@ -44,7 +44,8 @@
             export ESPRESSO_APP_CONTRACTS_DATA_FILE_SOURCE=/tmp/source_espresso_app_deploy.json
             export ESPRESSO_APP_CONTRACTS_DATA_FILE_DESTINATION=/tmp/destination_espresso_app_deploy.json
             export CHAIN_NAME=source
-            export SOURCE_CHAIN_ID=31337
+            # TODO Values below are hard coded and should be fetched from the hyperlane egistry.
+            export SOURCE_CHAIN_ID=1337
             export DESTINATION_CHAIN_ID=31338
           '';
         };

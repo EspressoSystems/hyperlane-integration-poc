@@ -95,13 +95,14 @@ Create the signing key using aws cli:
 }
 ```
 
-Update some environment variables.
+Update some environment variables. Note the validator and relayer use the same address. *TODO* change this at some point.
 
 ```bash
 > export AWS_KMS_KEY_ID=alias/$VALIDATOR_KEY_ALIAS
 > export VALIDATOR_ADDRESS=`cast wallet address --aws`
 > echo $VALIDATOR_ADDRESS
 0xD6B7F5858E3e.... 
+> export RELAYER_ADDRESS=$VALIDATOR_ADDRESS
 ```
 
 ## Generate the S3 bucket
@@ -235,8 +236,8 @@ Check everything works, that is there are no ugly error messages.
 ```
 
 Send the relayer some ethers on the **destination** chain.
-Note the validator and relayer use the same address. *TODO* change this at some point.
-```
+
+```bash
 > cast send  $VALIDATOR_ADDRESS --value 1ether --private-key $HYP_KEY --rpc-url $DESTINATION_CHAIN_RPC_URL
 ```
 
