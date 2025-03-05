@@ -308,7 +308,7 @@ Once you are done you can shut down the docker containers like this:
 ```bash
 > docker compose down
 ```
-* In this repository/directory```
+* In this repository/directory
 
 ```bash
 > docker compose down
