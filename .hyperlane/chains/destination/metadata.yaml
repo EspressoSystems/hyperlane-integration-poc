@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=../schema.json
+chainId: 31338
+displayName: destination
+domainId: 31338
+index:
+  from: 0
+isTestnet: true
+name: destination
+nativeToken:
+  decimals: 18
+  name: Ether
+  symbol: ETH
+protocol: ethereum
+rpcUrls:
+  - http: http://localhost:8549
+technicalStack: arbitrumnitro

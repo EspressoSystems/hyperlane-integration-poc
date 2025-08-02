@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=../schema.json
+chainId: 412346
+displayName: Source
+domainId: 412346
+index:
+  from: 0
+isTestnet: true
+name: source
+nativeToken:
+  decimals: 18
+  name: Ether
+  symbol: ETH
+protocol: ethereum
+rpcUrls:
+  - http: http://localhost:8547
+technicalStack: arbitrumnitro

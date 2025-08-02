@@ -1,5 +1,50 @@
 # Hyperlane integration proof-of-concept
 
+### The following README is currently being updated; it may not reflect the most up to date changes, or may have duplications. 
+
+## Setup
+
+Install the Hyperlane CLI: `npm install -g @hyperlane-xyz/cli` 
+
+In another terminal run the command below to launch the source chain:
+`./scripts/launch_source_chain.sh`
+In another terminal run the command below to launch the destination chain:
+`./scripts/launch_destination_chain.sh`
+
+Hyperlane contracts are pre-deployed on each chain.  Each chain uses a unique seed to generate different addresses to reduce bugs caused by sharing the default addresses across chains.  If you want to update the seed, be sure to also update `.hyperlane.env` with the new pre-funded addresses. 
+
+
+## Deploy Hyperlane contracts
+Note: The above scripts will start Anvil nodes with *pre-deployed* Hyperlane contracts. The Hyperlane contracts only need to be deployed to fresh Anvil chains or (potentiall) forks of live chains.
+
+### Deploy Registries
+
+See the Hyperlane [docs](https://docs.hyperlane.xyz/docs/guides/quickstart/local-testnet-setup) for additional detail about deploying their contracts. 
+
+hyperlane registry init --private-key $SOURCE_HYP_KEY
+
+hyperlane registry init --private-key $DESTINATION_HYP_KEY
+
+This will create a hyperlane registry in your home directory at `.hyperlane/`. Copy this directory into the `.hyperlane` directory in this repo to allow others to reproduce your deployment. 
+
+NOTE: All calls to the Hyperlane CLI from now on will need to specify `--registry ./hyperlane`.  This tells the CLI to point to the registry in this repo instead of the user's local registry.  
+
+
+### Deploy Core Contracts
+NOTE: You can deploy core contracts without remaking the chain registries.  
+
+hyperlane core init --private-key $SOURCE_HYP_KEY --advanced --registry .hyperlane
+
+See source-configs/core-config.yaml for the options to select
+
+We set the default hook to the InterchainGasPaymaster.  Default hooks can be overriden.  Most of the time we will want to use the IGP hook.  
+
+We set the required hook to the MerkleTeeHook.  Any multisig ISM (ours is a multisig secured by a TEE) requires this hook.  
+
+The relayer and beneficiary addresses are set to the 2nd (1) address supplied in Foundry.  
+All other addresses are set to the 1st (0) address supplied in Foundry.  
+---
+
 This project allows to send a message between two chains deployed locally using Hyperlane. 
 More specifically by following the steps below you will:
 1. Spin up a local chain with Anvil and a local Caffeinated node (using [nitro-testnode](https://github.com/EspressoSystems/nitro-testnode))
