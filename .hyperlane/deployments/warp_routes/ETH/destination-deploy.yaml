@@ -1,0 +1,20 @@
+destination:
+  interchainSecurityModule:
+    relayer: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    type: trustedRelayerIsm
+  isNft: false
+  owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+  proxyAdmin:
+    address: "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853"
+    owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+  type: synthetic
+source:
+  interchainSecurityModule:
+    relayer: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    type: trustedRelayerIsm
+  isNft: false
+  owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+  proxyAdmin:
+    address: "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853"
+    owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+  type: native
