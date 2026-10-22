@@ -1,5 +1,5 @@
 {
 	"dependencies": {
-		"@hyperlane-xyz/cli": "^8.7.0"
+		"@hyperlane-xyz/cli": "^45.0.1"
 	}
 }
