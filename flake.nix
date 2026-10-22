@@ -22,7 +22,7 @@
             # From the foundry overlay
             # Note: Can also be referenced without overlaying as: foundry.defaultPackage.${system}
             foundry-bin
-            nodejs-18_x
+            nodejs_22
             nodePackages.pnpm
             awscli2
             pkgs.terraform
